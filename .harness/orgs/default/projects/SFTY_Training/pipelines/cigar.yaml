@@ -34,11 +34,10 @@ pipeline:
                     imageName: demo-repo1/myapp
                     tags:
                       - latest
-          infrastructure:
-            type: KubernetesDirect
+          platform:
+            os: Linux
+            arch: Arm64
+          runtime:
+            type: Cloud
             spec:
-              connectorRef: k8s477
-              namespace: default
-              automountServiceAccountToken: true
-              nodeSelector: {}
-              os: Linux
+              size: flex
