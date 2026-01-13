@@ -24,24 +24,21 @@ pipeline:
           execution:
             steps:
               - step:
-                  type: BuildAndPushGAR
-                  name: BuildAndPushGAR_1
-                  identifier: BuildAndPushGAR_1
+                  type: BuildAndPushDockerRegistry
+                  name: BuildAndPushDockerRegistry_1
+                  identifier: BuildAndPushDockerRegistry_1
                   spec:
-                    connectorRef: gcp477
-                    host: us-central1-docker.pkg.dev
-                    projectID: project-cb80b961-01f1-443f-bfb
-                    imageName: demo-repo1/my-app1
+                    connectorRef: docker_hub_477
+                    repo: venkatesh21/venky_harness
                     tags:
-                      - "1.1"
-          infrastructure:
-            type: KubernetesDirect
+                      - "1"
+          platform:
+            os: Linux
+            arch: Amd64
+          runtime:
+            type: Cloud
             spec:
-              connectorRef: k8s477
-              namespace: default
-              automountServiceAccountToken: true
-              nodeSelector: {}
-              os: Linux
+              size: flex
     - stage:
         name: cd
         identifier: cd
