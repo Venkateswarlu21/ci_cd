@@ -21,15 +21,6 @@ pipeline:
           caching:
             enabled: true
             override: false
-          platform:
-            os: Linux
-            arch: Amd64
-          runtime:
-            type: Cloud
-            spec:
-              size: flex
-              imageSpec:
-                imageName: ubuntu-22
           execution:
             steps:
               - step:
@@ -43,3 +34,11 @@ pipeline:
                     imageName: demo-repo1/my-app1
                     tags:
                       - "1.1"
+          infrastructure:
+            type: KubernetesDirect
+            spec:
+              connectorRef: k8s477
+              namespace: default
+              automountServiceAccountToken: true
+              nodeSelector: {}
+              os: Linux
