@@ -1,0 +1,45 @@
+pipeline:
+  name: ci-gaar-477
+  identifier: cigaar477
+  projectIdentifier: SFTY_Training
+  orgIdentifier: default
+  tags: {}
+  properties:
+    ci:
+      codebase:
+        connectorRef: github_477
+        repoName: ci_cd
+        build: <+input>
+  stages:
+    - stage:
+        name: ci-gar
+        identifier: cigar
+        description: ""
+        type: CI
+        spec:
+          cloneCodebase: true
+          caching:
+            enabled: true
+            override: false
+          platform:
+            os: Linux
+            arch: Amd64
+          runtime:
+            type: Cloud
+            spec:
+              size: flex
+              imageSpec:
+                imageName: ubuntu-22
+          execution:
+            steps:
+              - step:
+                  type: BuildAndPushGAR
+                  name: BuildAndPushGAR_1
+                  identifier: BuildAndPushGAR_1
+                  spec:
+                    connectorRef: gcp477
+                    host: us-central1-docker.pkg.dev
+                    projectID: project-cb80b961-01f1-443f-bfb
+                    imageName: emo-repo1/my-app:latest
+                    tags:
+                      - "1.1"
