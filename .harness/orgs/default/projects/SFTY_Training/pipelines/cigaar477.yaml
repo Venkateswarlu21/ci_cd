@@ -40,6 +40,6 @@ pipeline:
                     connectorRef: gcp477
                     host: us-central1-docker.pkg.dev
                     projectID: project-cb80b961-01f1-443f-bfb
-                    imageName: demo-repo1/my-app:latest
+                    imageName: demo-repo1/my-app1
                     tags:
                       - "1.1"
