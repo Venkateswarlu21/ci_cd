@@ -1,0 +1,14 @@
+inputSet:
+  name: input_set
+  identifier: input_set
+  orgIdentifier: default
+  projectIdentifier: SFTY_Training
+  pipeline:
+    identifier: cigaar477
+    properties:
+      ci:
+        codebase:
+          build:
+            type: branch
+            spec:
+              branch: <+trigger.branch>
